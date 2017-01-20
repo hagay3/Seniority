@@ -1,11 +1,3 @@
-import com.sun.source.tree.BinaryTree;
-import java.util.TreeMap;
-import javax.swing.tree.DefaultMutableTreeNode;
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-/**
- * Created by hagai-home on 14/01/2017.
- */
 
 // Note: The youngest fo to the left (they are smaller than their father)
 // Note: The older fo to the right (they are bigger than their father)
