@@ -18,8 +18,13 @@ public class main {
         System.out.println(tree.add("196806", "Magnetto"));
         System.out.println(tree.add("196501", "Yael"));
 
-        System.out.println("Print tree from oldest to youngest");
+        System.out.println("\n --- Deletes root node : 195702");
+        tree.remove("195702");
+        System.out.println("\nNew root");
+        tree.getRoot().print();
+        System.out.println("\nPrint tree from oldest to youngest");
         tree.printTreeFromOldestToYoungest();
+
 
         System.out.println("\n --- Searching 194706");
         tree.search("194706");
@@ -44,12 +49,6 @@ public class main {
         System.out.println("\nPrint tree from oldest to youngest");
         tree.printTreeFromOldestToYoungest();
 
-        System.out.println("\n --- Deletes root node : 195702");
-        tree.remove("195702");
-        System.out.println("\nNew root");
-        tree.getRoot().print();
-        System.out.println("\nPrint tree from oldest to youngest");
-        tree.printTreeFromOldestToYoungest();
 
 
     }

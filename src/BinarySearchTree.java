@@ -17,8 +17,7 @@ public class BinarySearchTree {
     }
 
     public int add(String date, String name) {
-        LocalDate myLocalDate = parseDate(date);
-        BSTNode newNode = new BSTNode(myLocalDate, name);
+        BSTNode newNode = new BSTNode(parseDate(date), name);
         if (root == null) {
             root = newNode;
             return BSTNode.counter;
@@ -38,14 +37,13 @@ public class BinarySearchTree {
             System.out.println("root is null");
         else {
             System.out.println("Removes root");
-            LocalDate myDate = parseDate(removeNodeDate);
-            if (this.root.getDateOfBirth().isEqual(myDate)) {
+            if (this.root.getDateOfBirth().isEqual(parseDate(removeNodeDate))) {
                 BSTNode auxRoot = new BSTNode(LocalDate.MIN,"dummyRoot");
                 auxRoot.setLeft(this.root);
-                this.root.remove(myDate, auxRoot);
+                this.root.remove(parseDate(removeNodeDate) , auxRoot);
                 root = auxRoot.getLeft();
             } else {
-                this.root.remove(myDate, null);
+                this.root.remove(parseDate(removeNodeDate) , null);
             }
         }
     }
