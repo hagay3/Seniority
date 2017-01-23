@@ -11,7 +11,7 @@ public class Algorithm {
         root.add(new BSTNode("196706", "Medium"));
         
         
-        //print left node
+        //print left node .
         root.getRoot().getLeft().print();
     }
 }
