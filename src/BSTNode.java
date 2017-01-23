@@ -1,8 +1,22 @@
 
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class BSTNode {
+
+    private LocalDate dateOfBirth;
+    private String name;
+    private int id;
+    private BSTNode left,right;
+    public static int counter = 0;
+
+    public BSTNode(LocalDate date, String name) {
+        this.dateOfBirth = date;
+        this.name = name;
+        counter++;
+        this.id = counter;
+    };
 
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
@@ -28,18 +42,6 @@ public class BSTNode {
         this.id = id;
     }
 
-    private LocalDate dateOfBirth;
-    private String name;
-    private int id;
-    private BSTNode left,right;
-    public static int counter = 0;
-
-    public BSTNode(String date, String name) {
-        this.dateOfBirth = parseDate(date);
-        this.name = name;
-        counter++;
-        this.id = counter;
-    };
 
     public BSTNode getLeft() {
         return left;
@@ -73,12 +75,67 @@ public class BSTNode {
         return counter;
     }
 
-    public void print(){
-        System.out.println(this.dateOfBirth+ ", " +this.name);
+    public void search(LocalDate searchDate) {
+
+        if (searchDate.isEqual(this.dateOfBirth))
+            printNameAndId();
+        else if (searchDate.isAfter(this.dateOfBirth)) {
+            if (left == null)
+                System.out.println(" node not found");
+            else
+                left.search(searchDate);
+        } else if (searchDate.isBefore(this.dateOfBirth)) {
+            if (right == null)
+                System.out.println(" node not found");
+            else
+                right.search(searchDate);
+        }
+
     }
 
-    private LocalDate parseDate(String date){
-        return LocalDate.parse(date.substring(0,4)+"-"+date.substring(4,6)+"-01");
+
+    public void remove(LocalDate removeNodeDate, BSTNode parent) {
+
+        if (removeNodeDate.isAfter(this.dateOfBirth)) {
+            if (left != null)
+                left.remove(removeNodeDate, this);
+            else
+                System.out.println("node not found");
+        } else if (removeNodeDate.isBefore(this.dateOfBirth)) {
+            if (right != null)
+                right.remove(removeNodeDate, this);
+            else
+                System.out.println("node not found");
+        } else {
+            if (left != null && right != null) {
+                this.dateOfBirth = right.minValue();
+                right.remove(this.dateOfBirth, this);
+            } else if (parent.left.dateOfBirth.isEqual(this.dateOfBirth)) {
+                parent.left = (left != null) ? left : right;
+            } else if (parent.right == this) {
+                parent.right = (left != null) ? left : right;
+            }
+        }
     }
+
+    private LocalDate minValue() {
+        if (left == null)
+            return this.dateOfBirth;
+        else
+            return left.minValue();
+    }
+
+    public void visit(){
+        if (right != null) { right.visit(); }
+        this.print();
+        if (left != null) {  left.visit(); }
+    }
+
+    public void print(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMM");
+        System.out.println(dateOfBirth.format(formatter) + " : " + this.name + " : id "+ this.id);
+    }
+
+    public void printNameAndId() {System.out.println("id " + this.id + ": " + this.name);}
 
 }
