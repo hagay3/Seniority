@@ -9,7 +9,9 @@ public class Algorithm {
         root.add(new BSTNode("195706", "Older"));
         root.add(new BSTNode("198706", "Younger"));
         root.add(new BSTNode("196706", "Medium"));
-
+        
+        
+        //print left node
         root.getRoot().getLeft().print();
     }
 }
