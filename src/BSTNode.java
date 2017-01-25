@@ -59,23 +59,23 @@ public class BSTNode {
         this.right = right;
     }
 
-    public int add(BSTNode newNode) {
+    public int addNode(BSTNode newNode) {
 
         if (newNode.dateOfBirth.isAfter(this.dateOfBirth)) {
             if (left == null) {
                 left = newNode;
             } else
-            	return left.add(newNode);
+            	return left.addNode(newNode);
         } else if (newNode.dateOfBirth.isBefore(this.dateOfBirth)) {
             if (right == null) {
                 right = newNode;
             } else
-                return right.add(newNode);
+                return right.addNode(newNode);
         }
         return counter;
     }
 
-    public void search(LocalDate searchDate) {
+    public void searchNode(LocalDate searchDate) {
 
         if (searchDate.isEqual(this.dateOfBirth))
             printNameAndId();
@@ -83,27 +83,27 @@ public class BSTNode {
             if (left == null)
                 System.out.println(" node not found");
             else
-                left.search(searchDate);
+                left.searchNode(searchDate);
         } else if (searchDate.isBefore(this.dateOfBirth)) {
             if (right == null)
                 System.out.println(" node not found");
             else
-                right.search(searchDate);
+                right.searchNode(searchDate);
         }
 
     }
 
 
-    public void remove(LocalDate removeNodeDate, BSTNode parent) {
+    public void removeNode(LocalDate removeNodeDate, BSTNode parent) {
 
         if (removeNodeDate.isAfter(this.dateOfBirth)) {
             if (left != null)
-                left.remove(removeNodeDate, this);
+                left.removeNode(removeNodeDate, this);
             else
                 System.out.println("node not found");
         } else if (removeNodeDate.isBefore(this.dateOfBirth)) {
             if (right != null)
-                right.remove(removeNodeDate, this);
+                right.removeNode(removeNodeDate, this);
             else
                 System.out.println("node not found");
         } else {
@@ -112,7 +112,7 @@ public class BSTNode {
                 this.name = right.minValue().name;
                 this.id = right.minValue().id;
                 
-                right.remove(this.dateOfBirth, this);
+                right.removeNode(this.dateOfBirth, this);
             } else if (parent.left.dateOfBirth.isEqual(this.dateOfBirth)) {
                 parent.left = (left != null) ? left : right;
             } else if (parent.right == this) {

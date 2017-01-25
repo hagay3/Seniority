@@ -22,28 +22,29 @@ public class BinarySearchTree {
             root = newNode;
             return BSTNode.counter;
         } else
-            return root.add(newNode);
+            return root.addNode(newNode);
     }
 
     public void search(String date){
         if (this.root == null)
             System.out.println("root is null");
         else
-            this.root.search(parseDate(date));
+            this.root.searchNode(parseDate(date));
     }
 
     public void remove(String removeNodeDate) {
         if (this.root == null)
             System.out.println("root is null");
         else {
-            System.out.println("Removes root");
+            
             if (this.root.getDateOfBirth().isEqual(parseDate(removeNodeDate))) {
+            	System.out.println("Removes root");
                 BSTNode auxRoot = new BSTNode(LocalDate.MIN,"dummyRoot");
                 auxRoot.setLeft(this.root);
-                this.root.remove(parseDate(removeNodeDate) , auxRoot);
+                this.root.removeNode(parseDate(removeNodeDate) , auxRoot);
                 root = auxRoot.getLeft();
             } else {
-                this.root.remove(parseDate(removeNodeDate) , null);
+                this.root.removeNode(parseDate(removeNodeDate) , null);
             }
         }
     }
