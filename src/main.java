@@ -17,7 +17,10 @@ public class main {
         System.out.println(tree.add("199703", "LittleMan"));
         System.out.println(tree.add("196806", "Magnetto"));
         System.out.println(tree.add("196501", "Yael"));
-
+        
+        System.out.println("\nCurrent root");
+        tree.getRoot().print();
+        
         System.out.println("\n --- Deletes root node : 195702");
         tree.remove("195702");
         System.out.println("\nNew root");

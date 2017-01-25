@@ -65,7 +65,7 @@ public class BSTNode {
             if (left == null) {
                 left = newNode;
             } else
-                left.add(newNode);
+            	return left.add(newNode);
         } else if (newNode.dateOfBirth.isBefore(this.dateOfBirth)) {
             if (right == null) {
                 right = newNode;
@@ -108,7 +108,10 @@ public class BSTNode {
                 System.out.println("node not found");
         } else {
             if (left != null && right != null) {
-                this.dateOfBirth = right.minValue();
+                this.dateOfBirth = right.minValue().dateOfBirth;
+                this.name = right.minValue().name;
+                this.id = right.minValue().id;
+                
                 right.remove(this.dateOfBirth, this);
             } else if (parent.left.dateOfBirth.isEqual(this.dateOfBirth)) {
                 parent.left = (left != null) ? left : right;
@@ -118,9 +121,9 @@ public class BSTNode {
         }
     }
 
-    private LocalDate minValue() {
+    private BSTNode minValue() {
         if (left == null)
-            return this.dateOfBirth;
+            return this;
         else
             return left.minValue();
     }
