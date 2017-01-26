@@ -15,4 +15,5 @@ Interface methods:
 * Remove person by date
 * Search person by date
 * Print the tree by precedence
+
 Date Format: yyyyMM, e.g 196703
