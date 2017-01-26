@@ -7,7 +7,7 @@ Developers for this project
 * Hagai Ovadia
 * Maor Shmueli
 
-## The Interface
+## Interface
 The code provide an interface to add and remove people considering their age.
 Add, remove and search algorithms implemented above a Binary Search Tree which obviously improve time complexity against other data structures.
 Interface methods:
