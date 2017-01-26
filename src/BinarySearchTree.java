@@ -44,6 +44,7 @@ public class BinarySearchTree {
                 this.root.removeNode(parseDate(removeNodeDate) , auxRoot);
                 root = auxRoot.getLeft();
             } else {
+            	System.out.println("Removes Node");
                 this.root.removeNode(parseDate(removeNodeDate) , null);
             }
         }
