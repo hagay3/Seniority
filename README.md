@@ -10,3 +10,9 @@ Developers for this project
 ## The Interface
 The code provide an interface to add and remove people considering their age.
 Add, remove and search algorithms implemented above a Binary Search Tree which obviously improve time complexity against other data structures.
+Interface methods:
+* Add person by providing name and date
+* Remove person by date
+* Search person by date
+* Print the tree by precedence
+Date Format: yyyyMM, e.g 196703
