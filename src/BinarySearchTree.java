@@ -18,6 +18,8 @@ public class BinarySearchTree {
 
     public int add(String date, String name) {
         BSTNode newNode = new BSTNode(parseDate(date), name);
+        if (!BSTNode.nodesList.contains(newNode))
+            BSTNode.nodesList.add(newNode);
         if (root == null) {
             root = newNode;
             return BSTNode.counter;
@@ -36,13 +38,13 @@ public class BinarySearchTree {
         if (this.root == null)
             System.out.println("root is null");
         else {
-            
             if (this.root.getDateOfBirth().isEqual(parseDate(removeNodeDate))) {
             	System.out.println("Removes root");
                 BSTNode auxRoot = new BSTNode(LocalDate.MIN,"dummyRoot");
                 auxRoot.setLeft(this.root);
                 this.root.removeNode(parseDate(removeNodeDate) , auxRoot);
                 root = auxRoot.getLeft();
+
             } else {
             	System.out.println("Removes Node");
                 this.root.removeNode(parseDate(removeNodeDate) , null);
@@ -50,8 +52,8 @@ public class BinarySearchTree {
         }
     }
 
-    public void printTreeFromOldestToYoungest(){
-        root.visit();
+    public void printBySeniority(){
+        root.printAll();
     }
 
     public LocalDate parseDate(String date){

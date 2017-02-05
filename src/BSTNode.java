@@ -1,7 +1,6 @@
-
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 public class BSTNode {
 
@@ -10,6 +9,7 @@ public class BSTNode {
     private int id;
     private BSTNode left,right;
     public static int counter = 0;
+    public static ArrayList<BSTNode> nodesList = new ArrayList<BSTNode>();
 
     public BSTNode(LocalDate date, String name) {
         this.dateOfBirth = date;
@@ -60,7 +60,6 @@ public class BSTNode {
     }
 
     public int addNode(BSTNode newNode) {
-
         if (newNode.dateOfBirth.isAfter(this.dateOfBirth)) {
             if (left == null) {
                 left = newNode;
@@ -95,7 +94,6 @@ public class BSTNode {
 
 
     public void removeNode(LocalDate removeNodeDate, BSTNode parent) {
-
         if (removeNodeDate.isAfter(this.dateOfBirth)) {
             if (left != null)
                 left.removeNode(removeNodeDate, this);
@@ -115,8 +113,11 @@ public class BSTNode {
                 right.removeNode(this.dateOfBirth, this);
             } else if (parent.left.dateOfBirth.isEqual(this.dateOfBirth)) {
                 parent.left = (left != null) ? left : right;
+                nodesList.remove(this);
             } else if (parent.right == this) {
                 parent.right = (left != null) ? left : right;
+                nodesList.remove(this);
+
             }
         }
     }
@@ -128,15 +129,14 @@ public class BSTNode {
             return left.minValue();
     }
 
-    public void visit(){
-        if (right != null) { right.visit(); }
-        this.print();
-        if (left != null) {  left.visit(); }
+    public void printAll(){
+        for(BSTNode node : nodesList)
+            node.print();
     }
 
     public void print(){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMM");
-        System.out.println(dateOfBirth.format(formatter) + " : " + this.name + " : id "+ this.id);
+        System.out.println(id + " : "+  this.dateOfBirth.format(formatter) + " : " + this.name);
     }
 
     public void printNameAndId() {System.out.println("id " + this.id + ": " + this.name);}

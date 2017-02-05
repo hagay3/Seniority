@@ -21,7 +21,10 @@ public class main {
         //print the current root
         System.out.println("\nCurrent root:");
         tree.getRoot().print();												//11
-        
+
+        System.out.println("\nPrint By Seniority:");
+        tree.printBySeniority();
+
         //delete root
         System.out.println("\nDeletes root node : 195702");
         tree.remove("195702");												//12
@@ -29,10 +32,9 @@ public class main {
         //print new root node
         System.out.println("\nNew root:");
         tree.getRoot().print();												//13
-        
-        //query all tree from old to young
-        System.out.println("\nPrint tree from oldest to youngest:");
-        tree.printTreeFromOldestToYoungest();								//14
+
+        System.out.println("\nPrint By Seniority:");
+        tree.printBySeniority();								//14
 
         
         //delete non-root node
@@ -45,8 +47,8 @@ public class main {
         
         
         //query all tree from old to young
-        System.out.println("\nPrint tree from oldest to youngest:");
-        tree.printTreeFromOldestToYoungest();								//17
+        System.out.println("\nPrint By Seniority:");
+        tree.printBySeniority();								//17
 
         //print  root node
         System.out.println("\nCurrent root:");
@@ -95,8 +97,8 @@ public class main {
         tree.search("192705");												//28
         
         //query all tree from old to young
-        System.out.println("\nPrint tree from oldest to youngest");
-        tree.printTreeFromOldestToYoungest();								//29
+        System.out.println("\nPrint By Seniority");
+        tree.printBySeniority();								//29
 
         //delete non-root node
         System.out.println("\nDeletes non-root node : 196501");
@@ -115,8 +117,8 @@ public class main {
         tree.remove("192705");												//33
         
         //query all tree from old to young
-        System.out.println("\nPrint tree from oldest to youngest");
-        tree.printTreeFromOldestToYoungest();								//34
+        System.out.println("\nPrint By Seniority");
+        tree.printBySeniority();								//34
         
         
         //print the current root
@@ -136,8 +138,8 @@ public class main {
         
         
         //query all tree from old to young
-        System.out.println("\nPrint tree from oldest to youngest");
-        tree.printTreeFromOldestToYoungest();								//46
+        System.out.println("\nPrint By Seniority");
+        tree.printBySeniority();								//46
         
         //delete non-root node with two leafs
         System.out.println("\n --- Deletes node with two leafs : 191410");
@@ -155,8 +157,8 @@ public class main {
         	
 
         //query all tree from old to young
-        System.out.println("\nPrint tree from oldest to youngest");
-        tree.printTreeFromOldestToYoungest();								//50
+        System.out.println("\nPrint By Seniority");
+        tree.printBySeniority();								//50
         
 
 
